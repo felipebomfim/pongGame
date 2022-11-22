@@ -33,7 +33,7 @@
             }
         }
 
-        // let drawSheet = document.getElementById("sheet");
+        let drawSheet = document.getElementById("sheet");
         // let drawingArea = drawSheet.getContext("2d");
         
         let canvasElement = new CanvasRectangle(0,0,600,400, "#286047")
@@ -56,7 +56,11 @@
         
         // right block
         let rightBlock = new CanvasRectangle(canvasElement.width - blocksWidth - blocksPadding, (canvasElement.height-blocksHeight)/2, blocksWidth, blocksHeight);
-        rightBlock.draw()
+        rightBlock.draw();
+
+        let squaredBall = new CanvasRectangle(30, 30, 4 , 4);
+        squaredBall.draw();
+
     </script>
 
 </body>
