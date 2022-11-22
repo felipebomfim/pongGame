@@ -31,20 +31,59 @@
                 this.color = color;
             }
 
-            draw (area = document.getElementById("sheet").getContext("2d")){
-                area.fillStyle = this.color;
-                area.fillRect(this.x, this.y,this.width,this.height);
+            draw (context = document.getElementById("sheet").getContext("2d")){
+                context.fillStyle = this.color;
+                context.fillRect(this.x, this.y,this.width,this.height);
             }
             
-            drawBall (area = document.getElementById("sheet").getContext("2d")){
-                area.fillStyle = this.color;
-                area.fillRect(this.x - this.width/2, this.y - this.height/2,this.width,this.height);
+            // drawBall (context = document.getElementById("sheet").getContext("2d")){
+            //     context.fillStyle = this.color;
+            //     context.fillRect(this.x - this.width/2, this.y - this.height/2,this.width,this.height);
+            // }
+        }
+
+        class CanvasBall {
+            constructor(x, y, radius = 8, color = "#ffffff"){
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
             }
+
+            draw(context = document.getElementById("sheet").getContext("2d")){
+                context.beginPath();
+                context.fillStyle = this.color;
+                context.arc(this.x,this.y,this.radius,0,2*Math.PI);
+                context.fill();
+            }
+            
+        }
+
+        class CanvasTextElement {
+            constructor (content, x , y, font = "bold 72px Arial", textAlign = "center", textBaseLine = "top", color = "#01341D"){
+                this.content = content;
+                this.x = x;
+                this.y = y;
+                this.font = font;
+                this.textAlign = textAlign;
+                this.textBaseLine = textBaseLine;
+                this.fillStyle = color;
+            }
+            
+            print(context = document.getElementById("sheet").getContext("2d")){
+                context.font = this.font;
+                context.font = this.font;
+                context.textAlign = this.textAlign;
+                context.textBaseLine = this.textBaseLine;
+                context.fillStyle = this.color;
+                context.fillText(`${this.content}`,this.x,this.y)
+            }
+
 
         }
 
         let drawingSheet = document.getElementById("sheet");
-        // let drawingArea = drawSheet.getContext("2d");
+        // let drawingcontext = drawSheet.getContext("2d");
         
         const canvasElement = new CanvasRectangle(0,0,600,400, "#286047");
         canvasElement.draw();
@@ -66,11 +105,14 @@
         let rightBlock = new CanvasRectangle(canvasElement.width - blocksWidth - blocksPadding, (canvasElement.height-blocksHeight)/2, blocksWidth, blocksHeight);
         rightBlock.draw();
         
-        let squaredBall = new CanvasRectangle(100, 100, 8 , 8);
-        squaredBall.drawBall();
+        // let squaredBall = new CanvasRectangle(100, 100, 8 , 8);
+        // squaredBall.drawBall();
+
+        let ball = new CanvasBall(100, 100);
         
-        let ballX = ballY = 100; 
+        // let ballX = ballY = 100; 
         function run(){
+
             canvasElement.draw();
 
             separator.draw();
@@ -79,9 +121,9 @@
             
             rightBlock.draw();
 
-            squaredBall.drawBall();
+            ball.draw();
             
-            squaredBall.x+=3;    
+            ball.x+=3;    
         }
     </script>
 
