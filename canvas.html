@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pong Game</title>
     <style>
         canvas {
-            padding-left: 0;
+            padding: 0;
             margin-left: auto;
             margin-right: auto;
             display: block;
-            width: 800px;
         }
     </style>
 </head>
@@ -30,7 +29,7 @@
 
             draw (area = document.getElementById("sheet").getContext("2d")){
                 area.fillStyle = this.color;
-                area.fillRect(this.x, this.y,this.height,this.width);
+                area.fillRect(this.x, this.y,this.width,this.height);
             }
         }
 
@@ -49,9 +48,9 @@
         let separator = new CanvasRectangle((canvasElement.width-separatorWidth)/2, 0, separatorWidth, canvasElement.width);
         separator.draw();
 
+        // // drawingArea.fillRect(10,175,8,50);
+        
         // left block
-        // drawingArea.fillRect(10,175,8,50);
-
         let leftBlock = new CanvasRectangle(blocksPadding, (canvasElement.height-blocksHeight)/2, blocksWidth, blocksHeight);
         leftBlock.draw();
         
