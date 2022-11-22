@@ -18,6 +18,10 @@
     <canvas id="sheet" width="600" height="400"></canvas>
 
     <script>
+        window.onload = () => {
+            setInterval(run , 1000/30);
+        }
+
         class CanvasRectangle {
             constructor(x, y, width, height, color = "#ffffff") {
                 this.x = x;
@@ -54,19 +58,31 @@
         let separator = new CanvasRectangle((canvasElement.width-separatorWidth)/2, 0, separatorWidth, canvasElement.width);
         separator.draw();
 
-        // // drawingArea.fillRect(10,175,8,50);
-        
         // left block
         let leftBlock = new CanvasRectangle(blocksPadding, (canvasElement.height-blocksHeight)/2, blocksWidth, blocksHeight);
-        leftBlock.draw();
+            leftBlock.draw();
         
         // right block
         let rightBlock = new CanvasRectangle(canvasElement.width - blocksWidth - blocksPadding, (canvasElement.height-blocksHeight)/2, blocksWidth, blocksHeight);
         rightBlock.draw();
-
+        
         let squaredBall = new CanvasRectangle(100, 100, 8 , 8);
         squaredBall.drawBall();
+        
+        let ballX = ballY = 100; 
+        function run(){
+            canvasElement.draw();
 
+            separator.draw();
+
+            leftBlock.draw();
+            
+            rightBlock.draw();
+
+            squaredBall.drawBall();
+            
+            squaredBall.x+=3;    
+        }
     </script>
 
 </body>
